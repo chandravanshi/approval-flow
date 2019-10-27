@@ -6,12 +6,21 @@ public class StateMachineImplementation {
 
   public static void main(String [] args) {
     StateMachine<ApprovalState, ApprovalEvent> machine = ApprovalWorkflowStateMachine.newInstance();
-    try{
-      machine.start(ApprovalState.valueOf(args[0]));
-    } catch (Exception exception) {
-      System.out.println("Not a valid state. Please input valid state.");
-    }
     Scanner scanner = new Scanner(System.in);
+    String state = null;
+    if(args.length > 0) {
+      state = args[0];
+    }
+    while(true) {
+      try{
+        machine.start(ApprovalState.valueOf(state));
+        break;
+      } catch (Exception exception) {
+        System.out.println("Not a valid initial state. Please input valid initial state.");
+        state = scanner.next();
+      }
+    }
+
     while(true) {
       try {
         System.out.println("Enter next event.");
