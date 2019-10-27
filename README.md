@@ -5,6 +5,7 @@ It is generic enough to create any state machine and its transition using Enums.
 This contains one implementation with following states and events:
 
 States:  APPROVED, REJECTED, PENDING
+
 Events:  APPROVE, REJECT, HOLD
 
 Build tool used is MAVEN.
